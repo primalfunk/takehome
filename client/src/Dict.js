@@ -4,12 +4,12 @@ import styled from 'styled-components'
 import axios from 'axios'
 
 class Dict extends React.Component {
-  state = { word: [], query: '' }
+  state = { word: [], query: '', done: false }
 
   handleSubmit = e => {
     e.preventDefault()
     axios.get(`/api/words/${this.state.query}`)
-      .then(res => this.setState({ word: res.data.results }))
+      .then(res => this.setState({ word: res.data.results, done: true }))
     this.setState({ query: '' })
   }
 
@@ -36,7 +36,7 @@ class Dict extends React.Component {
           </MySegment>
         </DictContainer>
         <DictContainer style={{ "backgroundColor": "white" }}>
-          { (word.length !== undefined && word.length > 0) ?
+          { this.state.done === true ?
             <div style={{ "display": "flex", "flexDirection": "column", "alignItems": "center", "width": "28vw", "height": "auto" }}>
               <p>{`Results for: `}<b>{word[0].id}</b></p>
                 { word[0].lexicalEntries.map(l => (
