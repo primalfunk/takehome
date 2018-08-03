@@ -10,7 +10,6 @@ class Dict extends React.Component {
     e.preventDefault()
     axios.get(`/api/words/${this.state.query}`)
       .then(res => this.setState({ word: res.data.results }))
-      .catch(res => { console.log(res.errors) })
     this.setState({ query: '' })
   }
 
@@ -20,7 +19,6 @@ class Dict extends React.Component {
 
   render() {
     const word  = this.state.word
-    console.log(word)
     return (
       <Fragment>
         <MyHeader>DevPoint Studios Dev Application: Take Home Project</MyHeader>
