@@ -10,7 +10,6 @@ class Api::WordsController < ApplicationController
       "app_id": ENV['ID'],
       "app_key": ENV['KEY']
     })
-    puts @response
     render json: @response
   end
 end
