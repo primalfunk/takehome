@@ -36,7 +36,7 @@ class Dict extends React.Component {
           </MySegment>
         </DictContainer>
         <DictContainer style={{ "backgroundColor": "white" }}>
-          { word.length > 0 ?
+          { (word.length !== undefined && word.length > 0) ?
             <div style={{ "display": "flex", "flexDirection": "column", "alignItems": "center", "width": "28vw", "height": "auto" }}>
               <p>{`Results for: `}<b>{word[0].id}</b></p>
                 { word[0].lexicalEntries.map(l => (
