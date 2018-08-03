@@ -10,6 +10,7 @@ class Dict extends React.Component {
     e.preventDefault()
     axios.get(`/api/words/${this.state.query}`)
       .then(res => this.setState({ word: res.data.results, done: true }))
+      .catch(err => console.log(err.messages.full))
     this.setState({ query: '' })
   }
 
